@@ -229,7 +229,7 @@ open class SwiftMessagesSegue: UIStoryboardSegue {
     /// the presenting view controller is no longer in the heirarchy.
     private func startReleaseMonitor() {
         Task { @MainActor [weak self] in
-            try? await Task.sleep(seconds: 2)
+            try? await Task.sleep(2)
             guard let self = self else { return }
             switch self.source.view.window {
             case .none: self.selfRetainer = nil
