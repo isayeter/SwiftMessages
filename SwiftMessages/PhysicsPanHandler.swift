@@ -99,7 +99,7 @@ open class PhysicsPanHandler {
         return pan
     }()
 
-    func configure(context: AnimationContext, animator: Animator) {
+    func configure(context: AnimationContextx, animator: Animator) {
         if let oldView = (messageView as? BackgroundViewable)?.backgroundView ?? messageView {
             oldView.removeGestureRecognizer(pan)
         }
