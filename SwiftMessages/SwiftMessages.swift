@@ -566,7 +566,7 @@ open class SwiftMessages {
         didSet {
             if oldValue != nil {
                 Task { [weak self] in
-                    try? await Task.sleep(seconds: self?.pauseBetweenMessages ?? 0)
+                    try? await Task.sleep(nanoseconds: UInt64(self?.pauseBetweenMessages ?? 0))
                     self?.dequeueNext()
                 }
             }
@@ -589,7 +589,7 @@ open class SwiftMessages {
         if let delay = presenter.delayShow {
             delays.add(presenter: presenter)
             Task { [weak self] in
-                try? await Task.sleep(seconds: delay)
+                try? await Task.sleep(nanoseconds: UInt64(delay))
                 // Don't enqueue if the view has been hidden during the delay window.
                 guard let self, self.delays.remove(presenter: presenter) else { return }
                 doEnqueue()
@@ -646,7 +646,7 @@ open class SwiftMessages {
         }
         let delay = current.delayHide ?? 0
         Task {
-            try? await Task.sleep(seconds: delay)
+            try? await Task.sleep(nanoseconds: UInt64(delay))
             action()
         }
     }
@@ -658,7 +658,7 @@ open class SwiftMessages {
         autohideToken = current
         if let pauseDuration = current.pauseDuration {
             Task { [weak self] in
-                try? await Task.sleep(seconds: pauseDuration)
+                try? await Task.sleep(nanoseconds: UInt64(pauseDuration))
                 // Make sure we've still got a green light to auto-hide.
                 guard let self, self.autohideToken == current else { return }
                 self.internalHide(presenter: current)
