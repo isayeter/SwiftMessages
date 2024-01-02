@@ -130,7 +130,7 @@ open class PhysicsPanHandler {
                 if !containerView.bounds.intersects(frame) {
                     self.isOffScreen = true
                     Task {
-                        try? await Task.sleep(nanoseconds: UInt64(self.hideDelay))
+                        try? await Task.sleep(UInt64(self.hideDelay))
                         animator.delegate?.hide(animator: animator)
                     }
                 }
