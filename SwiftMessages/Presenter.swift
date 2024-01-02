@@ -160,7 +160,7 @@ class Presenter: NSObject {
             }
         }
 
-        let context = animationContext()
+        let context = animationContextx()
         animator.show(context: context) { (completed) in
             completion(completed)
         }
@@ -191,7 +191,7 @@ class Presenter: NSObject {
     func hide(animated: Bool, completion: @escaping AnimationCompletion) {
         isHiding = true
         self.config.eventListeners.forEach { $0(.willHide(self.view)) }
-        let context = animationContext()
+        let context = animationContextx()
         let action = {
             if let viewController = self.presentationContext.viewControllerValue() as? WindowViewController {
                 viewController.uninstall()
@@ -233,8 +233,8 @@ class Presenter: NSObject {
         }
     }
 
-    private func animationContext() -> AnimationContext {
-        return AnimationContext(messageView: view, containerView: maskingView, safeZoneConflicts: safeZoneConflicts(), interactiveHide: config.interactiveHide)
+    private func animationContextx() -> AnimationContextx {
+        return AnimationContextx(messageView: view, containerView: maskingView, safeZoneConflicts: safeZoneConflicts(), interactiveHide: config.interactiveHide)
     }
 
     private func safeZoneConflicts() -> SafeZoneConflicts {
