@@ -43,7 +43,7 @@ public struct SafeZoneConflicts: OptionSet {
     public static let overStatusBar = SafeZoneConflicts(rawValue: 1 << 3)
 }
 
-public class AnimationContext {
+public class AnimationContextx {
 
     public let messageView: UIView
     public let containerView: UIView
@@ -64,9 +64,9 @@ public protocol Animator: AnyObject {
     /// Adopting classes should declare as `weak`.
     var delegate: AnimationDelegate? { get set }
 
-    func show(context: AnimationContext, completion: @escaping AnimationCompletion)
+    func show(context: AnimationContextx, completion: @escaping AnimationCompletion)
 
-    func hide(context: AnimationContext, completion: @escaping AnimationCompletion)
+    func hide(context: AnimationContextx, completion: @escaping AnimationCompletion)
 
     /// The show animation duration. If the animation duration is unknown, such as if using `UIDynamicAnimator`,
     /// then provide an estimate. This value is used by `SwiftMessagesSegue`.
