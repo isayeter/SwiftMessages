@@ -28,7 +28,7 @@ public class PhysicsAnimation: NSObject, Animator {
     public weak var delegate: AnimationDelegate?
     weak var messageView: UIView?
     weak var containerView: UIView?
-    var context: AnimationContext?
+    var context: AnimationContextx?
 
     public override init() {}
 
@@ -36,13 +36,13 @@ public class PhysicsAnimation: NSObject, Animator {
         self.delegate = delegate
     }
 
-    public func show(context: AnimationContext, completion: @escaping AnimationCompletion) {
+    public func show(context: AnimationContextx, completion: @escaping AnimationCompletion) {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustMargins), name: UIDevice.orientationDidChangeNotification, object: nil)
         install(context: context)
         showAnimation(context: context, completion: completion)
     }
 
-    public func hide(context: AnimationContext, completion: @escaping AnimationCompletion) {
+    public func hide(context: AnimationContextx, completion: @escaping AnimationCompletion) {
         NotificationCenter.default.removeObserver(self)
         if panHandler.isOffScreen {
             context.messageView.alpha = 0
@@ -65,7 +65,7 @@ public class PhysicsAnimation: NSObject, Animator {
         CATransaction.commit()
     }
 
-    func install(context: AnimationContext) {
+    func install(context: AnimationContextx) {
         let view = context.messageView
         let container = context.containerView
         messageView = view
@@ -98,7 +98,7 @@ public class PhysicsAnimation: NSObject, Animator {
         adjustable.layoutMargins = adjustable.defaultMarginAdjustment(context: context)
     }
 
-    func showAnimation(context: AnimationContext, completion: @escaping AnimationCompletion) {
+    func showAnimation(context: AnimationContextx, completion: @escaping AnimationCompletion) {
         let view = context.messageView
         view.alpha = 0.25
         view.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
@@ -115,7 +115,7 @@ public class PhysicsAnimation: NSObject, Animator {
         CATransaction.commit()
     }
 
-    func installInteractive(context: AnimationContext) {
+    func installInteractive(context: AnimationContextx) {
         guard context.interactiveHide else { return }
         panHandler.configure(context: context, animator: self)
     }
