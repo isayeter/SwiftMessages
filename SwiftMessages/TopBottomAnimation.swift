@@ -39,7 +39,7 @@ public class TopBottomAnimation: NSObject, Animator {
 
     weak var messageView: UIView?
     weak var containerView: UIView?
-    var context: AnimationContext?
+    var context: AnimationContextx?
 
     public init(style: Style) {
         self.style = style
@@ -50,13 +50,13 @@ public class TopBottomAnimation: NSObject, Animator {
         self.delegate = delegate
     }
 
-    public func show(context: AnimationContext, completion: @escaping AnimationCompletion) {
+    public func show(context: AnimationContextx, completion: @escaping AnimationCompletion) {
         NotificationCenter.default.addObserver(self, selector: #selector(adjustMargins), name: UIDevice.orientationDidChangeNotification, object: nil)
         install(context: context)
         showAnimation(completion: completion)
     }
 
-    public func hide(context: AnimationContext, completion: @escaping AnimationCompletion) {
+    public func hide(context: AnimationContextx, completion: @escaping AnimationCompletion) {
         NotificationCenter.default.removeObserver(self)
         let view = context.messageView
         self.context = context
@@ -77,7 +77,7 @@ public class TopBottomAnimation: NSObject, Animator {
         })
     }
 
-    func install(context: AnimationContext) {
+    func install(context: AnimationContextx) {
         let view = context.messageView
         let container = context.containerView
         messageView = view
