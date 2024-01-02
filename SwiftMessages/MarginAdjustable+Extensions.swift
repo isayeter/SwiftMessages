@@ -9,7 +9,7 @@
 import UIKit
 
 extension MarginAdjustable where Self: UIView {
-    public func defaultMarginAdjustment(context: AnimationContext) -> UIEdgeInsets {
+    public func defaultMarginAdjustment(context: AnimationContextx) -> UIEdgeInsets {
         var layoutMargins: UIEdgeInsets = layoutMarginAdditions
         var safeAreaInsets: UIEdgeInsets = {
             guard respectSafeArea else { return .zero }
